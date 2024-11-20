@@ -82,7 +82,7 @@ int main() {
             std::cerr << "\nException cause : " << x.what() << std::endl;
         }
         catch (const std::exception& x) {
-            std::cout << "\nException cause : " << x.what() << std::endl;            
+            std::cerr << "\nException cause : " << x.what() << std::endl;            
         }
     }
 }
