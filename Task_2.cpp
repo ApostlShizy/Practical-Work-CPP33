@@ -47,7 +47,9 @@ int main() {
             if (river[choice] == 'F') {
                 throw FishCatchException();
             }
-            else if (river[choice] == 'B') {                
+            else if (river[choice] == 'B') {  
+                /*In Visual Studio*/              
+                /*throw std::exception("You cath boot");*/
                 throw std::exception();
             }
             else {
@@ -64,6 +66,9 @@ int main() {
             return 0;
         }
         catch (std::exception) {
+            /*In Visual Studio*/
+            /*catch (const std::exception& x)*/
+            /*std::cerr << "\nException cause : << x.what() << std::endl;"*/
             std::cerr << "\nException cause : You cath boot " << std::endl;
             display(river);
             return 0;
