@@ -9,14 +9,6 @@ public:
     }
 };
 
-/*in Visual Studio non exist class*/
-class NonExistErorr : public std::exception {
-public:
-    const char* what() const noexcept override {
-        return "non-existent article";
-    }
-};
-
 void add(std::map<int, int>& store) {
     int article;
     int number;
@@ -40,9 +32,7 @@ void remove(std::map<int, int>& store) {
         throw InputErorr();
     }
     if (store.find(article) == store.end()) {
-        /*In Visual Studio*/
-        /*throw std::exception("non-existent article");*/
-        throw NonExistErorr();
+        throw std::runtime_error("non-existent article");
     }
     if (store[article] - number < 0) {
         throw std::invalid_argument("below zero");
@@ -84,9 +74,7 @@ int main() {
         catch (const std::invalid_argument& x) {
             std::cerr << "\nException cause : " << x.what() << std::endl;
         }
-        catch (const NonExistErorr& x) {
-            /*in Visual Studio*/
-            /*catch (const std::exception& x)*/            
+        catch (const std::runtime_error& x) {         
             std::cerr << "\nException cause : " << x.what() << std::endl;            
         }
     }

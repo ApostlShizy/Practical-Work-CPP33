@@ -24,13 +24,13 @@ void display(char river[]) {
 }
 
 int main() {
-    srand(std::time(nullptr));
-    char river[] {' ',' ', ' ', ' ', ' ', ' ', ' ', ' ', ' '};
+    srand(std::time(nullptr));    
+    char river[] {'.','.', '.', '.', '.', '.', '.', '.', '.'};
     river[rand() % 9] = 'F';
     int boot = 3;
     do {
         int temp = rand() % 9;
-        if (river[temp] == ' ') {
+        if (river[temp] == '.') {
             river[temp] = 'B';
             --boot;
         }
@@ -48,9 +48,7 @@ int main() {
                 throw FishCatchException();
             }
             else if (river[choice] == 'B') {  
-                /*In Visual Studio*/              
-                /*throw std::exception("You cath boot");*/
-                throw std::exception();
+                throw std::runtime_error("You cath boot");
             }
             else {
                 std::cout << "\nThat sector is empty, try again" << std::endl;
@@ -65,11 +63,8 @@ int main() {
             display(river);
             return 0;
         }
-        catch (std::exception) {
-            /*In Visual Studio*/
-            /*catch (const std::exception& x)*/
-            /*std::cerr << "\nException cause : << x.what() << std::endl;"*/
-            std::cerr << "\nException cause : You cath boot " << std::endl;
+        catch (const std::runtime_error& x) {
+            std::cerr << "\nException cause : " << x.what() << std::endl;
             display(river);
             return 0;
         }        

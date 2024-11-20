@@ -114,8 +114,7 @@ int main() {
                 std::cout << "\nEnter value : ";
                 std::cin >> tempStr;
                 if (!std::cin) {
-                    /*In Visual Studio*/
-                    /*throw std::exceptio("Input error");*/
+                    throw std::runtime_error("Input error");
                     throw std::exception();
                 }
                 first.add(temp, tempStr);
@@ -125,8 +124,7 @@ int main() {
                 std::cout << "\nEnter key to remove : ";
                 std::cin >> temp;
                 if (!std::cin) {
-                    /*In Visual Studio*/
-                    /*throw std::exceptio("Input error");*/
+                    throw std::runtime_error("Input error");
                     throw std::exception();
                 }
                 first.remove(temp);
@@ -136,9 +134,7 @@ int main() {
                 std::cout << "\nEnter key to find : ";
                 std::cin >> temp;
                 if (!std::cin) {
-                    /*In Visual Studio*/
-                    /*throw std::exceptio("Input error");*/
-                    throw std::exception();
+                    throw std::runtime_error("Input error");
                 }
                 first.find(temp);
             }
@@ -146,11 +142,8 @@ int main() {
                 first.print();
             }
         }
-        catch (std::exception) {
-            /*In Visual Studio*/
-            /*catch (const std::exception& x)*/
-            /*std::cerr << "\nException cause : "<< x.what()<<std::endl;*/
-            std::cerr << "\nException cause : Input error" << std::endl;
+        catch (const std::runtime_error& x) {
+            std::cerr << "\nException cause : "<< x.what()<<std::endl;            
             std::cin.clear();
             std::cin.ignore(10000, '\n');
         }
