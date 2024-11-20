@@ -14,12 +14,7 @@ void display(char river[]) {
         if (i % 3 == 0) {
             std::cout << std::endl;
         }
-        if (river[i] == ' ') {
-            std::cout << '.';
-        }
-        else {
-            std::cout << river[i];
-        }       
+        std::cout << river[i];      
     }
 }
 
